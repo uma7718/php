@@ -480,3 +480,74 @@ $user['hobby'] = 'パン作り';
 </pre>
 
 <!-- 2-3-11 -->
+<p>
+<?php
+  $num = -1;
+  var_dump($num === null || $num < 0);
+  
+  $num = null;
+  var_dump($num === null || $num < 0);
+
+  $num = 1;
+  var_dump($num === null || $num < 0);
+?>
+</p>
+
+<p>
+<?php
+  $temperature = 39;
+
+  $isSuitable = $temperature >= 40 && $temperature <= 41;
+  var_dump($isSuitable);
+  
+  $isNotSuitable = $temperature < 40 || $temperature > 41;
+  var_dump($isNotSuitable);
+  
+  $isNotSuitable = !($temperature >= 40 && $temperature <= 41);
+  var_dump($isNotSuitable);
+?>
+</p>
+
+<!-- 2-3-12 -->
+<p>
+<?php
+  $a = true;
+  $b = false;
+  $c = false;
+  var_dump($a || $b && $c); // true
+  var_dump($a || $b); // true
+  var_dump($b && $c); // false
+  var_dump(($a || $b) && $c); // false
+  var_dump($a || $b and $c); // false
+  var_dump($b || $c); // false
+  var_dump($a && $b); // false
+?>
+</p>
+
+<!-- 2-3-13 -->
+<p>
+<?php
+$t = true;
+$f = false;
+
+$t && print(1);
+$f && print(2);
+$t || print(3);
+$f || print(4);
+?>
+</p>
+
+<p>
+<?php
+  // define('URL_BASE', 'http://www.example.com');
+
+  define('URL_BASE') || define('URL_BASE', 'http://default.example.com');
+  echo 'URL_BASE is:',URL_BASE;
+?>
+</p>
+<p>
+  define(~) || die('エラーメッセージ'); <br>
+  これは定義されていなかったらエラーメッセージがでるというイディオム
+</p>
+
+<!-- 2-3-14 -->
