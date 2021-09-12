@@ -297,3 +297,64 @@ $user['hobby'] = 'パン作り';
 ?>
 
 <!-- 2-3-1 -->
+<?php
+  $num1 = 7 + 3;
+  $num2 = 7 - 3;
+  $num3 = 7 * 3;
+  $num4 = 7 / 3;
+  $num5 = 7 % 3;
+  $num6 = 7 ** 3;
+?>
+<p>加算：<?=$num1?></p>
+<p>減算：<?=$num2?></p>
+<p>乗算：<?=$num3?></p>
+<p>除算：<?=$num4?></p>
+<p>あまり：<?=$num5?></p>
+<p>累乗：<?=$num6?></p>
+
+<?php $num = 7;?>
+<?php $added = ++$num;?>
+<p>前置インクリメント時のnum：<?=$num?></p>
+<p>前置インクリメント時のadded：<?=$added?></p>
+<?php $num = 7;?>
+<?php $added = $num++;?>
+<p>後置インクリメント時のnum：<?=$num?></p>
+<p>後置インクリメント時のnum：<?=$added?></p>
+
+<!-- 2-3-2 -->
+<?php
+  $arr1 = ['a','b'];
+  $arr2 = ['d','e','f'];
+  $mergedA = $arr1 + $arr2;
+  $mergedB = $arr2 + $arr1;
+  $mergedC = array_merge($arr1, $arr2);
+  $mergedD = array_merge($arr2, $arr1);
+?>
+<p>●配列の合成結果：</p>
+* mergedA:<?php print_r($mergedA)?> <br>
+* mergedB:<?php print_r($mergedB)?> <br>
+* mergedC:<?php print_r($mergedC)?> <br>
+* mergedD:<?php print_r($mergedD)?>
+
+<?php
+  $arr3 = [
+    'a' => 'value A',
+    'b' => 'value B'
+  ];
+  $arr4 = [
+    'a' => 'value C',
+    'b' => 'value D',
+    'c' => 'value E'
+  ];
+  $mergedE = $arr3 + $arr4;
+  $mergedF = $arr4 + $arr3;
+  $mergedG = array_merge($arr3, $arr4);
+  $mergedH = array_merge($arr4, $arr3);
+?>
+<p>●連想配列の合成結果：</p>
+* mergedE:<?php print_r($mergedE)?> <br>
+* mergedF:<?php print_r($mergedF)?> <br>
+* mergedG:<?php print_r($mergedG)?> <br>
+* mergedH:<?php print_r($mergedH)?>
+
+<!-- 2-3-3 -->
