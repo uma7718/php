@@ -96,3 +96,49 @@ EOM;
 ?></pre></p>
 
 <!-- 2-2-7 -->
+<p>
+  <?php 
+    $moji = "：";
+    echo (int)1.5 + 2.6;
+    echo $moji;
+    echo (int)(1.5 + 2.6);
+    echo $moji;
+    echo (int)1.5 + (int)2.6;
+  ?>
+</p>
+<p>
+  <?php
+    echo intval(1.5) + 2.6;
+    echo intval(1.5 + 2.6);
+    echo intval(1.5) + intval(2.6);
+  ?>
+</p>
+<p>
+<?php
+  var_dump(1234);
+  var_dump((string)1234);
+  var_dump((int)1234.5);
+  var_dump((string)true);
+  var_dump((string)false);
+  var_dump((bool)'true');
+  var_dump((bool)'false');
+  var_dump((bool)0);
+  var_dump((bool)1);
+  var_dump((bool)-1);
+?>
+</p>
+<p>
+<?php
+  var_dump(strval(1234));
+  var_dump(intval(1234.5));
+  var_dump(strval(true));
+  var_dump(strval(false));
+  var_dump(boolval('true'));
+  var_dump(boolval('false'));
+  var_dump(boolval(0));
+  var_dump(boolval(1));
+  var_dump(boolval(-1));
+?>
+</p>
+
+<!-- 2-2-8 -->
