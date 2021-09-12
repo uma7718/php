@@ -358,3 +358,125 @@ $user['hobby'] = 'パン作り';
 * mergedH:<?php print_r($mergedH)?>
 
 <!-- 2-3-3 -->
+<p><?=floor((0.1+0.7)*10);?></p>
+<p><?=((0.1+0.7)*10);?></p>
+
+<p><?php echo sprintf('%.50f',(0.1+0.7)*10);?></p>
+
+<?php
+  $result1 = floor((0.1+0.7)*10);
+  $result2 = floor((string)(0.1+0.7)*10);
+  // BCMathのモジュールが入ってなかった
+  // $result3 = floor((int)bcmul(bcadd(0.1,0.7,2),10,2));
+?>
+<h4>(0.1 + 0.7) * 10 の切り捨ての計算結果</h4>
+<p>result1：<?=$result1?></p>
+<p>result2：<?=$result2?></p>
+<p>result3：<?=$result3?></p>
+
+
+<!-- 2-3-5 -->
+<?php
+  $sum = 3;
+  $sum *= 5;
+
+  $greeting = 'Hello';
+  $greeting .= 'World.';
+?>
+<p>sum：<?=$sum?></p>
+<p>greeting：<?=$greeting?></p>
+
+<!-- 2-3-6 -->
+<?php
+  $greeting1 = 'Hello';
+  $greeting2 = &$greeting1;
+  $greeting1 = 'World';
+?>
+<p>greeting1：<?=$greeting1?></p>
+<p>greeting2：<?=$greeting2?></p>
+
+<!-- 2-3-7 -->
+<?php
+  $a = 3;
+  $b = 5;
+  var_dump($a < $b);
+  var_dump($b < $a);
+?>
+<br>
+<?php $point = 85;?>
+<?php
+  var_dump($point == 85);
+  var_dump($point == '85');
+  var_dump($point === 85);
+  var_dump($point === '85');
+  var_dump($point != 85);
+  var_dump($point != '85');
+  var_dump($point !== 85);
+  var_dump($point !== '85');
+  var_dump($point > 85);
+  var_dump($point >= 85);
+  var_dump($point > '85');
+  var_dump($point >= '85');
+?>
+<br>
+
+<!-- 2-3-8 -->
+<?php
+  $a = 1.2340;
+  $b = 1.2345;
+
+  var_dump(abs($a - $b) < 0.1);
+  var_dump(abs($a - $b) < 0.01);
+  var_dump(abs($a - $b) < 0.001);
+  var_dump(abs($a - $b) < 0.0001);
+  var_dump(abs($a - $b) < 0.00001);
+?>
+
+<!-- 2-3-9 -->
+<?php $point = 85;?>
+<?php
+  var_dump($point <=> 85);
+  var_dump($point <=> 70);
+  var_dump($point <=> 99);
+?>
+
+<!-- 2-3-10 -->
+<p><?php
+  $a = -100;
+  echo $a < 0 ? 0:$a;
+
+  $a = 100;
+  echo $a < 0 ? 0:$a;
+?></p>
+
+<p>
+  <?php
+    $a = null;
+    echo $a ?? 'default value';
+    $a = 'SOME VALUE';
+    echo $a ?? 'default value';
+  ?>
+</p>
+
+<pre>
+<?php
+  $greeting = null;
+  $message = $greeting === null ? 'Hello':$greeting;
+  echo 'あいさつは', $message, PHP_EOL;
+
+  $greeting = 'Good Morning';
+  $message = $greeting === null ? 'Hello':$greeting;
+  echo 'あいさつは', $message, PHP_EOL;
+
+  $greeting = null;
+  $message = $greeting ?? 'Hello';
+  echo 'あいさつは', $message, PHP_EOL;
+
+  $greeting = 'Good Morning';
+  $message = $greeting ?? 'Hello';
+  echo 'あいさつは', $message, PHP_EOL;
+
+?>
+</pre>
+
+<!-- 2-3-11 -->
