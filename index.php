@@ -158,3 +158,75 @@ EOM;
 </p>
 
 <!-- 2-2-9 -->
+<?php
+$user = [
+  'name' => '山下次郎',
+  'age' => 30,
+  'place' => '有田'
+];
+$user['job'] = '伝統工芸士';
+$user['hobby'] = 'パン作り';
+?>
+<p><?=$user['name']?></p>
+<p><?=$user['age']?></p>
+<p><?=$user['place']?></p>
+<p><?=$user['job']?></p>
+<p><?=$user['hobby']?></p>
+<p><pre><?php print_r($user);?></pre></p>
+
+<!-- 2-2-10 -->
+<?php
+  $participants = [];
+  $participants[0] = '小林';
+  $participants[1] = '田中';
+  $participants[2] = '鈴木';
+  $participants['event'] = '大井町開催 ワイン会';
+  $participants['event-date'] = '2022.1.15';
+?>
+<pre><?php print_r($participants)?></pre>
+
+<!-- 2-2-11 -->
+<?php
+  $airports = [
+    [
+      'name' => '羽田',
+      'address' => '東京都大田区'
+    ],
+    [
+      'name' => '成田',
+      'address' => '千葉県成田市'
+    ],
+    [
+      'name' => '中部国際',
+      'address' => '愛知県常滑市'
+    ]
+  ];
+  $airports[] =
+    [
+      'name' => '関西国際',
+      'address' => '大阪府泉佐野市',
+    ];
+?>
+<p><?=$airports[0]['name']?>-<?=$airports[0]['address']?></p>
+<p><?=$airports[1]['name']?>-<?=$airports[1]['address']?></p>
+<p><?=$airports[2]['name']?>-<?=$airports[2]['address']?></p>
+<p><?=$airports[3]['name']?>-<?=$airports[3]['address']?></p>
+<p><pre><?php print_r($airports);?></pre></p>
+
+<?php
+  $chars = [
+    ['あ','い','う','え','お'],
+    ['か','き','く','け','こ'],
+    ['さ','し','す','せ','そ']
+  ];
+  $chars[] = ['た','ち','つ','て','と'];
+?>
+<p>chars[0][0]:<?=$chars[0][0]?></p>
+<p>chars[0][1]:<?=$chars[0][1]?></p>
+<p>chars[0][2]:<?=$chars[0][2]?></p>
+<p>chars[1][0]:<?=$chars[1][0]?></p>
+<p>chars[1][1]:<?=$chars[1][1]?></p>
+<p>chars[1][2]:<?=$chars[1][2]?></p>
+<p><pre><?php print_r($chars);?></pre></p>
+
+<!-- 2-2-12 -->
