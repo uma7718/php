@@ -551,3 +551,46 @@ $f || print(4);
 </p>
 
 <!-- 2-3-14 -->
+<?php
+  define('BIT_RED', 1 << 0);
+  define('BIT_BLUE', 1 << 1);
+  define('BIT_YELLOW', 1 << 2);
+  define('BIT_GREEN', 1 << 3);
+
+  $colors = 0;
+  $colors = $colors | BIT_BLUE;
+  $colors = $colors | BIT_YELLOW;
+  $colors = $colors & ~ BIT_BLUE;
+  echo base_convert($colors, 10, 2);
+
+  var_dump(($colors & BIT_RED) > 0);
+  var_dump(($colors & BIT_BLUE) > 0);
+  var_dump(($colors & BIT_YELLOW) > 0);
+  var_dump(($colors & BIT_GREEN) > 0);
+?>
+
+<p>
+<?php
+  define('BIT_RED', 1 << 0);
+  define('BIT_BLUE', 1 << 1);
+  define('BIT_YELLOW', 1 << 2);
+  define('BIT_GREEN', 1 << 3);
+
+  $colors = 0;
+
+  $colors = BIT_BLUE | BIT_YELLOW;
+
+  $statuses = [
+    'red' => ($colors & BIT_RED) > 0,
+    'blue' => ($colors & BIT_BLUE) > 0,
+    'yellow' => ($colors & BIT_YELLOW) > 0,
+    'green' => ($colors & BIT_GREEN) > 0
+  ];
+?>
+<p>赤のボタンはONですか？<?php var_dump($statuses['red']);?></p>
+<p>青のボタンはONですか？<?php var_dump($statuses['blue']);?></p>
+<p>黄のボタンはONですか？<?php var_dump($statuses['yellow']);?></p>
+<p>緑のボタンはONですか？<?php var_dump($statuses['green']);?></p>
+</p>
+
+<!-- 2-4-1 -->
