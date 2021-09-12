@@ -230,3 +230,70 @@ $user['hobby'] = 'パン作り';
 <p><pre><?php print_r($chars);?></pre></p>
 
 <!-- 2-2-12 -->
+<?php
+  $chars = ['a','b','c'];
+  echo count($chars), PHP_EOL;
+
+  $chars = [
+    'a'=>'あ',
+    'i'=>'い',
+    'u'=>'う',
+    'e'=>'え',
+    'o'=>'お'
+  ];
+  echo count($chars), PHP_EOL;
+?>
+
+<!-- 2-2-13 -->
+<?php
+  $userData = [12345, 'Tarou Yamada', 'Tokyo', 32];
+?>
+<p>ユーザーID：<?=$userData[0]?></p>
+<p>ユーザー名：<?=$userData[1]?></p>
+<p>都道府県：<?=$userData[2]?></p>
+<p>年齢：<?=$userData[3]?></p>
+
+<?php
+  $id = $userData[0];
+  $name = $userData[1];
+  $prefecture = $userData[2];
+  $age = $userData[3];
+?>
+<p>ユーザーID：<?=$id?></p>
+<p>ユーザー名：<?=$name?></p>
+<p>都道府県：<?=$prefecture?></p>
+<p>年齢：<?=$age?></p>
+
+<!-- リストを使う -->
+<?php
+  $userData = [12345, 'Tarou Yamada', 'Tokyo', 32];
+  list($id, $name, $prefecture, $age) = $userData;
+?>
+<p>ユーザーID：<?=$id?></p>
+<p>ユーザー名：<?=$name?></p>
+<p>都道府県：<?=$prefecture?></p>
+<p>年齢：<?=$age?></p>
+
+<!-- 2-2-14 -->
+<?php
+  define('TAX_PERCENT', 0.08);
+
+  define('SMTP_HOST', 'example.com');
+?>
+<p>消費税率：<?=TAX_PERCENT;?></p>
+<p>１００円の税込金額：<?=100 + 100 * TAX_PERCENT;?></p>
+<p>SMTPサーバー：<?=SMTP_HOST;?></p>
+
+<!-- 2-2-15 -->
+<?php
+  function someFunction()
+  {
+    echo '現在の関数名は：',__FUNCTION__,'です。<br>';
+  }
+  echo '現在のファイル名は：',__FILE__,'です。<br>';
+  echo '現在の行番号は：',__LINE__,'です。<br>';
+  echo '現在のディレクトリは：',__DIR__,'です。<br>';
+  someFunction()
+?>
+
+<!-- 2-3-1 -->
