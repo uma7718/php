@@ -716,3 +716,175 @@ $f || print(4);
 <p>メッセージ：<?=$message?></p>
 
 <!-- 2-4-5 -->
+<?php
+  if(!$a)
+  // これらはif文に入る
+  $a = [];
+  $a = 0;
+  $a = '0';
+?>
+<?php
+  if($a == '')
+  $a = []; // 入らない
+  $a = 0; // 入る
+  $a = '0'; // 入らない
+?>
+<?php
+  if(empty($a))
+  // if(!$a) と全く同じ
+?>
+<?php
+  if(!isset($a)) // 変数が定義されており、nullでないときの反対(!)
+  // または
+  if(is_null($a)) // 変数が未定義、nullのとき
+  $a = '' // でもこれはif文に入らない
+?>
+<?php
+  if(is_null($a) || $a === '')
+  $a = '';
+  $a = null;
+  // $a が未定義
+  // この３つのときだけif文に入る。これが最強
+?>
+
+<?php
+  $value = '0';
+  if(!$value){
+    echo '変数は空です。', PHP_EOL; // 誤判定
+  }else{
+    echo '変数は空ではありません。', PHP_EOL;
+  }
+?>
+
+<?php
+  $value = 0;
+  if($value == ''){
+    echo '変数は空です。', PHP_EOL; // 誤判定
+  }else{
+    echo '変数は空ではありません。', PHP_EOL;
+  }
+?>
+
+<?php
+  $value = '0';
+  if(empty($value)){
+    echo '変数は空です。',PHP_EOL; // 誤判定
+  }else{
+    echo '変数は空ではありません。',PHP_EOL;
+  }
+?>
+
+<?php
+  $value = null;
+  if($value === ''){
+    echo '変数は空です。',PHP_EOL;
+  }else{
+    echo '変数は空ではありません。',PHP_EOL; //nullだけどこっちに入る
+  }
+?>
+
+<?php
+  $value = '';
+  if(is_null($value)){
+    echo '変数は空です。',PHP_EOL;
+  }else{
+    echo '変数は空ではありません。',PHP_EOL; // 空文字だけどこっちに入る
+  }
+?>
+
+<?php
+  $value = null;
+  if(is_null($value) || $value === ''){
+    echo '変数は空です。',PHP_EOL; // ここに入る
+  }else{
+    echo '変数は空ではありません。',PHP_EOL;
+  }
+?>
+
+<?php
+  $value = '';
+  if(is_null($value) || $value === ''){
+    echo '変数は空です。',PHP_EOL; // ここに入る
+  }else{
+    echo '変数は空ではありません。',PHP_EOL;
+  }
+?>
+
+<?php
+  $value = 0;
+  if(is_null($value) || $value === ''){
+    echo '変数は空です。',PHP_EOL;
+  }else{
+    echo '変数は空ではありません。',PHP_EOL; // ここに入る
+  }
+?>
+
+<!-- 2-4-6 -->
+<?php
+  $message = '';
+  $extension = 'gif';
+  switch($extension){
+    case 'jpg';
+      $message = 'jpg画像です。';
+      break;
+    case 'png';
+      $message = 'png画像です。';
+      break;
+    case 'gif';
+      $message = 'gif画像です。';
+      break;
+    case 'bmp'; // if($extensin == 'bmp' || $extension == 'svg') と同じ意味
+    case 'svg';
+      $message = 'bmpまたはsvg画像です。';
+      break;
+    default;
+      $message = 'その他の形式です。';
+  }
+?>
+<p>メッセージ：<?=$message?></p>
+
+
+<?php
+  // breakがないとあとのcase文も処理される
+  $number = 1;
+  switch($number){
+    case 0;
+      echo 'number=0の処理<br>';
+    case 1;
+      echo 'number=1の処理<br>';
+    case 2;
+      echo 'number=2の処理<br>';
+    default;
+      echo 'defaultの処理<br>';
+  }
+?>
+
+<!-- 2-4-7 -->
+<?php
+  // exit;
+  // exit(ステータスコード);
+  // exit(1);
+  // die('エラーメッセージ');
+  // die();
+?>
+
+<?php
+  // $score = -100;
+  // if($score < 0){
+  //   echo 'スコアは正の数でなければなりません。';
+  //   exit(1);
+  // }
+  // echo 'スコアは：',$score,'点です。';
+?>
+
+<?php
+  // $score = -100;
+  // if($score < 0){
+  //   die('dieスコアは正の数でなければなりません。');
+  // }
+  // echo 'スコアは：',$score,'点です。';
+?>
+
+<!-- 2-5-1 -->
+
+
