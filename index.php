@@ -861,30 +861,62 @@ $f || print(4);
 
 <!-- 2-4-7 -->
 <?php
-  // exit;
-  // exit(ステータスコード);
-  // exit(1);
-  // die('エラーメッセージ');
-  // die();
+/* 
+  exit;
+  exit(ステータスコード);
+  exit(1);
+  die('エラーメッセージ');
+  die();
+*/
 ?>
 
 <?php
-  // $score = -100;
-  // if($score < 0){
-  //   echo 'スコアは正の数でなければなりません。';
-  //   exit(1);
-  // }
-  // echo 'スコアは：',$score,'点です。';
+/*
+  $score = -100;
+  if($score < 0){
+    echo 'スコアは正の数でなければなりません。';
+    exit(1);
+  }
+  echo 'スコアは：',$score,'点です。';
+*/
 ?>
 
 <?php
-  // $score = -100;
-  // if($score < 0){
-  //   die('dieスコアは正の数でなければなりません。');
-  // }
-  // echo 'スコアは：',$score,'点です。';
+/*
+  $score = -100;
+  if($score < 0){
+    die('dieスコアは正の数でなければなりません。');
+  }
+  echo 'スコアは：',$score,'点です。';
+*/
 ?>
 
 <!-- 2-5-1 -->
+<?php
+  $colors = ['赤','青','黄'];
+  foreach($colors as $color) {
+    echo "<p>{$color}</p>";
+  }
+?>
+
+<?php
+  $colors = [
+    'red' => '赤',
+    'blue' => '青',
+    'yellow' => '黄'
+  ];
+  foreach($colors as $key => $value){
+    echo "<p>キー：{$key} 値：{$value}</p>";
+  }
+?>
+
+<?php
+  $colors = ['赤','青','黄'];
+  foreach($colors as $key => $value){
+    echo "<p>キー：{$key} 値：{$value}</p>";
+  }
+?>
+
+<!-- 2-5-2 -->
 
 
