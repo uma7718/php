@@ -750,72 +750,72 @@ $f || print(4);
 <?php
   $value = '0';
   if(!$value){
-    echo '変数は空です。', PHP_EOL; // 誤判定
+    echo '変数は空です。'.PHP_EOL; // 誤判定
   }else{
-    echo '変数は空ではありません。', PHP_EOL;
+    echo '変数は空ではありません。'.PHP_EOL;
   }
 ?>
 
 <?php
   $value = 0;
   if($value == ''){
-    echo '変数は空です。', PHP_EOL; // 誤判定
+    echo '変数は空です。'.PHP_EOL; // 誤判定
   }else{
-    echo '変数は空ではありません。', PHP_EOL;
+    echo '変数は空ではありません。'.PHP_EOL;
   }
 ?>
 
 <?php
   $value = '0';
   if(empty($value)){
-    echo '変数は空です。',PHP_EOL; // 誤判定
+    echo '変数は空です。'.PHP_EOL; // 誤判定
   }else{
-    echo '変数は空ではありません。',PHP_EOL;
+    echo '変数は空ではありません。'.PHP_EOL;
   }
 ?>
 
 <?php
   $value = null;
   if($value === ''){
-    echo '変数は空です。',PHP_EOL;
+    echo '変数は空です。'.PHP_EOL;
   }else{
-    echo '変数は空ではありません。',PHP_EOL; //nullだけどこっちに入る
+    echo '変数は空ではありません。'.PHP_EOL; //nullだけどこっちに入る
   }
 ?>
 
 <?php
   $value = '';
   if(is_null($value)){
-    echo '変数は空です。',PHP_EOL;
+    echo '変数は空です。'.PHP_EOL;
   }else{
-    echo '変数は空ではありません。',PHP_EOL; // 空文字だけどこっちに入る
+    echo '変数は空ではありません。'.PHP_EOL; // 空文字だけどこっちに入る
   }
 ?>
 
 <?php
   $value = null;
   if(is_null($value) || $value === ''){
-    echo '変数は空です。',PHP_EOL; // ここに入る
+    echo '変数は空です。'.PHP_EOL; // ここに入る
   }else{
-    echo '変数は空ではありません。',PHP_EOL;
+    echo '変数は空ではありません。'.PHP_EOL;
   }
 ?>
 
 <?php
   $value = '';
   if(is_null($value) || $value === ''){
-    echo '変数は空です。',PHP_EOL; // ここに入る
+    echo '変数は空です。'.PHP_EOL; // ここに入る
   }else{
-    echo '変数は空ではありません。',PHP_EOL;
+    echo '変数は空ではありません。'.PHP_EOL;
   }
 ?>
 
 <?php
   $value = 0;
   if(is_null($value) || $value === ''){
-    echo '変数は空です。',PHP_EOL;
+    echo '変数は空です。'.PHP_EOL;
   }else{
-    echo '変数は空ではありません。',PHP_EOL; // ここに入る
+    echo '変数は空ではありません。'.PHP_EOL; // ここに入る
   }
 ?>
 
