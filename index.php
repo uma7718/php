@@ -571,14 +571,14 @@ $f || print(4);
 
 <p>
 <?php
-  define('BIT_RED', 1 << 0);
-  define('BIT_BLUE', 1 << 1);
-  define('BIT_YELLOW', 1 << 2);
-  define('BIT_GREEN', 1 << 3);
+  define('BIT_RED', 1 << 0); //0001
+  define('BIT_BLUE', 1 << 1); // 0010
+  define('BIT_YELLOW', 1 << 2); // 0100
+  define('BIT_GREEN', 1 << 3); // 1000
 
   $colors = 0;
 
-  $colors = BIT_BLUE | BIT_YELLOW;
+  $colors = BIT_BLUE | BIT_YELLOW; //0110
 
   $statuses = [
     'red' => ($colors & BIT_RED) > 0,
@@ -593,4 +593,126 @@ $f || print(4);
 <p>緑のボタンはONですか？<?php var_dump($statuses['green']);?></p>
 </p>
 
-<!-- 2-4-1 -->
+<!-- 2-4-1,2 -->
+<?php
+  $point = 55;
+  $message = '通常スコアです。';
+  if ($point >= 80) {
+    $message = 'ハイスコアです。';
+  } elseif($point >= 50) {
+    $message = 'ミドルスコアです。';
+  }
+?>
+<p>メッセージ：<?=$message?></p>
+
+<?php
+  $bool1 = false;
+  $bool2 = true;
+  $bool3 = true;
+  if($bool1 === true) {
+    echo '$bool1は真です。';
+  }elseif($bool2 === true) {
+    echo '$bool2は真です。';
+  }elseif($bool3 === true) {
+    echo '$bool3は真です。';
+  }
+?>
+<?php
+  $bool1 = false;
+  $bool2 = true;
+  $bool3 = true;
+  if($bool1 === true) {
+    echo '$bool1は真です。';
+  }
+  if($bool2 === true) {
+    echo '$bool2は真です。';
+  }
+  if($bool3 === true) {
+    echo '$bool3は真です。';
+  }
+?>
+
+  <!-- 2-4-3 -->
+<?php
+  $point = 99;
+  if($point >= 80) {
+    $message = 'ハイスコアです。';
+  } elseif($point >= 50) {
+    $message = 'ミドルスコアです。';
+  } else {
+    $message = '通常スコアです。';
+  }
+?>
+<p>メッセージ：<?=$message?></p>
+
+<!-- 2-4-4 -->
+<?php
+  if($num === 100)
+  if($greeting ==='Hello')
+  if($connected !== true)
+
+  if($connected)
+  if(!$connected)
+
+  if(is_numeric($var))
+  if(isset($var))
+
+  if($point >= 50 && $point <= 80)
+  if($greeting === 'Helllo' || $greeting === 'Good Morning')
+
+  if($num)
+  if($answer)
+  if(count($arr))
+?>
+
+<?php
+  $point = 90;
+  if($point >= 80){
+    $message = 'ハイスコアです。';
+  }else{
+    $message = '通常スコアです。';
+  }
+?>
+<p>メッセージ：<?=$message?></p>
+
+<?php
+  $point = -30;
+  if($point < 0 || $point > 100){
+    $message = 'ポイント値が不正です。';
+  }else{
+    $message = 'ポイント値は正常です。';
+  }
+?>
+<p>メッセージ：<?=$message?></p>
+
+<?php
+  $point = '90A';
+  if(is_numeric($point)){
+    $message = 'ポイントは数値です。';
+  }else{
+    $message = 'ポイントが数値ではありません。';
+  }
+?>
+<p>メッセージ：<?=$message?></p>
+
+<?php
+  $point = '90A';
+  if(!is_numeric($point)){
+    $message = 'ポイントが数値ではありません。';
+  }else{
+    $message = 'ポイントは数値です。';
+  }
+?>
+<p>メッセージ：<?=$message?></p>
+
+<?php
+  $place = ['東京', '京都', 'ニューヨーク'];
+  if(count($place)){
+    $message = '場所が１つ以上存在します。';
+  }else{
+    $message = '場所が１つも存在しません。';
+  }
+?>
+<p>メッセージ：<?=$message?></p>
+
+<!-- 2-4-5 -->
