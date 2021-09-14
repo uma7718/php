@@ -918,5 +918,142 @@ $f || print(4);
 ?>
 
 <!-- 2-5-2 -->
+<?php
+  $numbers = [3,5,-1,2];
+  foreach ($numbers as &$number){
+    if($number < 0){
+      $number = 0;
+    }
+  }
+  unset($number);
+?>
+<pre><?php print_r($numbers);?></pre>
+
+<?php
+  $colors = [
+    'red' => '赤',
+    'blue' => '青',
+    'yellow' => '黄'
+  ];
+  foreach ($colors as $key => &$value){
+    $value ='カラー名：'.$value;
+  }
+  unset($value);
+?>
+<pre><?php print_r($colors);?></pre>
+
+<!-- 2-5-3 -->
+<?php
+  $numbers = [3,5,-1,2];
+  foreach ($numbers as &$number){
+    if($number < 0){
+      $number = 0;
+    }
+  }
+  $number = 100;
+  // unset($number);
+?>
+<pre><?php print_r($numbers);?></pre>
+
+<!-- 2-5-4 -->
+<?php
+  for($i = 0; $i < 5; $i++){
+    echo $i,PHP_EOL;
+  }
+?>
+
+<pre>
+<?php
+  for($i = 1; $i <= 3; $i++){
+    echo "Hello!({$i}回目)".PHP_EOL;
+  }
+?>
+</pre>
+
+<!-- 2-5-5 -->
+<pre>
+<?php
+  $lines = [
+    'いろはにほへと',
+    'ちりぬるを',
+    'わかよたれそ',
+  ];
+  for ($lineNumber = 1; $lineNumber <= count($lines); $lineNumber++){
+    echo $lineNumber,'行目：',$lines[$lineNumber -1],PHP_EOL;
+  }
+?>
+</pre>
+
+<!-- 2-5-6 -->
+<pre>
+<?php
+  for($i = 0; $i < 3; $i++) {
+    for($j = 0; $j < 2; $j++){
+      echo '$i:',$i,'$j:',$j,PHP_EOL;
+      if($i === 2 && $j === 1){
+        echo 'これが最後のループ処理です。',PHP_EOL;
+      }
+    }
+  }
+?>
+</pre>
+
+<!-- 2-5-7 -->
+<pre>
+<?php
+  $num = 100;
+  while ($num < 200){
+    echo $num,PHP_EOL;
+    $num += 30;
+  }
+  echo '$numが200を超えたためループを抜けました。';
+?>
+</pre>
+
+<!-- 2-5-8 -->
+<pre>
+<?php
+  $total = 0;
+  $numbers = [10,2,-5,3,'abc',6,1];
+  echo '正の整数を対象に入れるの要素を足し算します。',PHP_EOL;
+  foreach($numbers as $number){
+    if(!is_numeric($number)){
+    echo "数値ではない値を検出したため計算を中断します。（対象値：{$number}）",PHP_EOL;
+      break;
+    }
+    if($number < 0){
+      echo "マイナス値は計算しません。（対象値：{$number}）",PHP_EOL;
+      continue;
+    }
+    $total += $number;
+  }
+  echo "■合計値：{$total}",PHP_EOL;
+?>
+</pre>
+
+<!-- 2-5-9 -->
+<?php $colors = ['red','gray','yellow'];?>
+<?php foreach ($colors as $color){?>
+  <?php if ($color === 'red'){?>
+    <span style="color:red">赤</span>
+  <?php } elseif ($color === 'yellow'){?>
+    <span style="color:yellow">黄</span>
+  <?php }else{?>
+    <span style="color:black">その他</span>
+  <?php } ?>
+<?php } ?>
+
+<?php $colors = ['red','gray','yellow'];?>
+<?php foreach ($colors as $color):?>
+  <?php if ($color === 'red'):?>
+    <span style="color:red">赤</span>
+  <?php elseif ($color === 'yellow'):?>
+    <span style="color:yellow">黄</span>
+  <?php else:?>
+    <span style="color:black">その他</span>
+  <?php endif ?>
+<?php endforeach ?>
+
+<!-- 2-6-1 -->
 
 
