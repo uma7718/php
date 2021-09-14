@@ -1141,5 +1141,67 @@ $f || print(4);
 ?>
 
 <!-- 2-6-4 -->
+<?php
+function add3($a){
+  $a += 10;
+}
+$argument = 5;
+add3($argument);
+echo '$argumentは',$argument,'です。';
+?>
 
+<?php
+function add4(&$a){
+  $a += 10;
+}
+$argument = 5;
+add4($argument);
+echo '$argumentは',$argument,'です。';
+?>
 
+<pre>
+<?php
+  function checkNumber1($value)
+  {
+    return is_numeric($value) && (int)$value > 0;
+  }
+
+  function add5($a, $b, &$errorMessage)
+  {
+    if(!checkNumber1($a)){
+      $a = 0;
+      $errorMessage = '(※エラー：１番目の引数が正の整数でない。)';
+    }
+    if(!checkNumber1($b)){
+      $b = 0;
+      $errorMessage = '(※エラー：２番目の引数が正の整数でない。)';
+    }
+    $total = $a + $b;
+    return $total;
+  }
+
+  $errorMessage = null;
+  $result = add5(3,10, $errorMessage);
+  echo '計算結果：',$result, $errorMessage, PHP_EOL;
+
+  $errorMessage = null;
+  $result = add5(4,-5, $errorMessage);
+  echo '計算結果：',$result, $errorMessage, PHP_EOL;
+?>
+</pre>
+
+<!-- 2-6-5 -->
+<?php // 汎用性が低い
+  function add6($a, $b)
+  {
+    $total = $a + $b;
+    echo "<p>計算結果:{$total}</p>";
+  }
+  add6(3,10);
+  add6(5, 2);
+?>
+
+<!-- 2-6-6 -->
+<?php
+
+?>
