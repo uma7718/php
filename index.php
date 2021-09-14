@@ -1054,6 +1054,92 @@ $f || print(4);
   <?php endif ?>
 <?php endforeach ?>
 
+<!-- 2-6 -->
+<?php
+  function calculateAge($today, $birthday)
+  {
+    $age = floor(($today - $birthday) / 10000);
+    return $age;
+  }
+  $age = calculateAge(20181213, 19790101);
+  echo $age,(歳);
+?>
+
 <!-- 2-6-1 -->
+<pre>
+<?php
+  function add ($a, $b){
+    $total = $a + $b;
+    return $total;
+  }
+  $result = add(3, 10);
+  echo '計算結果：', $result,PHP_EOL;
+
+  $result = add(5, 2);
+  echo '計算結果：', $result,PHP_EOL;
+?>
+</pre>
+
+<!-- 2-6-2 -->
+<?php
+  function add1 ($a, $b){
+    if($a <= 0){
+      echo '引数aは正の数で指定してください。';
+      return;
+    }
+    if($b <= 0){
+      echo '引数bは正の数で指定してください。';
+      return;
+    }
+    $total = $a + $b;
+    echo '合計は',$total;
+    return $total;
+  }
+  $total = add1(5,-5);
+  echo $total;
+?>
+
+<?php
+  function findImageExtension($extensions)
+  {
+    foreach($extensions as $extension){
+      if($extension == 'jpg' || $extension == 'gif' || $extension == 'png'){
+        return $extension;
+      }
+    }
+    return 'NOT FOUND';
+  }
+
+  $extensions = ['pdf','jpg','docx','gif','exe'];
+  $findImageExtension = findImageExtension($extensions);
+  echo $findImageExtension;
+?>
+
+<!-- 2-6-3 -->
+<?php
+  function checkNumber($value)
+  {
+    return is_numeric($value) && (int)$value > 0;
+  }
+
+  function add2($a, $b)
+  {
+    if(!checkNumber($a) || !checkNumber($b)){
+      return 'INVALID';
+    }
+    $total = $a + $b;
+    return $total;
+  }
+
+  $result = add2(3,10);
+  echo "<p>計算結果：{$result}</p>";
+  $result = add2(5,-4);
+  echo "<p>計算結果：{$result}</p>";
+
+  $value = checkNumber(-4);
+  echo var_dump($value);
+?>
+
+<!-- 2-6-4 -->
 
 
