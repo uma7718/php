@@ -1,3 +1,5 @@
+<?php declare(strict_types=1); // 2-6-8 ?> 
+
 <?php
 echo "<h1>へい</h1>";
 ?>
@@ -539,9 +541,9 @@ $f || print(4);
 
 <p>
 <?php
-  // define('URL_BASE', 'http://www.example.com');
+  define('URL_BASE', 'http://www.example.com');
 
-  define('URL_BASE') || define('URL_BASE', 'http://default.example.com');
+  // define('URL_BASE') || define('URL_BASE', 'http://default.example.com');
   echo 'URL_BASE is:',URL_BASE;
 ?>
 </p>
@@ -1244,6 +1246,84 @@ function doSomething(int $num, ?string $message):?bool
   // exit();
 ?>
 
+<?php
+  function doSomething1(int $num, ?string $message):bool{
+    echo $num,$message;
+    return true;
+  }
+  // $ret = doSomething('ARG1','ARG2');
+  $ret = doSomething1(1,null);
+  
+  // error_log("[". date('Y-m-d H:i:s') . "]". "保存に失敗しました。\n", 3, "/var/log/php/error.log");
+
+  // phpinfo(); 
+  // exit();
+?>
+
 <!-- 2-6-8 -->
+<pre>
+<?php 
+/*
+declare(strict_types=1); PHPの一番初めにかかないとだめ
+*/ 
+function add9(int $a, int $b, ?string &$errorMessage): int
+{
+  // return 'abc';
+
+  if ($a <= 0 || $b <= 0){
+    $errorMessage = '(※エラー：正の整数を指定してください。)';
+  }
+  $total = $a + $b;
+  return $total;
+}
+
+$errorMessage = null;
+$result = add9(3, 10, $errorMessage);
+echo '計算結果：',$result, $errorMessage, PHP_EOL;
+
+$errorMessage = null;
+$result = add9(3, -4, $errorMessage);
+echo '計算結果：',$result, $errorMessage, PHP_EOL;
+
+// $errorMessage = null;
+// $result = add9('3', 10, $errorMessage);
+
+// $errorMessage = null;
+// $result = add9(true, 10, $errorMessage);
+?>
+</pre>
+
+<!-- 2-6-9 -->
+declare命令はプログラムファイル単位でしか適応できない
+
+<!-- 2-6-10 -->
+<?php
+  function calcPriceWithTax(int $price, float $tax = 0.08): float
+  {
+    $result = $price * (1 + $tax);
+    return $result;
+  }
+
+  $priceWithTax = calcPriceWithTax(1000);
+  echo "<p>計算結果：{$priceWithTax}</p>";
+
+  $priceWithTax = calcPriceWithTax(1000, 0.05);
+  echo "<p>計算結果：{$priceWithTax}</p>";
+
+  /*
+  function doSomething($a = 1, $b) エラー
+  function doSomething($b, $a = 1) デフォルト引数は右に書く
+  
+  $defaltTax = 0.08;
+  function doSomething($a, $defaltTax) エラー 変数はデフォルト値に指定できない
+  
+  define('DEFAULT_TAX', 0.08);
+  function doSomething($a = DEFAULT_TAX) 定数はOK
+  
+  function doSomething($a = [1,2,3]) 値はOK
+  */
+?>
+
+<!-- 2-6-11 -->
 
 
