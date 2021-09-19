@@ -1203,5 +1203,47 @@ echo '$argumentは',$argument,'です。';
 
 <!-- 2-6-6 -->
 <?php
-
+/*
+  $num1 = 3;
+  $num2 = 10;
+  function add7($a,$b){
+    echo '$num1を出力：',$num1; // エラー関数外の変数
+  }
+  $result = add7($num1, $num2); // エラー関数外の変数
+  echo '$aを出力：',$a;
+*/
 ?>
+
+<?php
+  $num1 = 3;
+  $num2 = 10;
+  function add8(){
+    global $num1, $num2;
+    return $num1 + $num2;
+  }
+  $result = add8();
+  echo $result;
+?>
+
+<!-- 2-6-7 -->
+function doSomething(int $num, string $message):bool
+function doSomething(int $num, ?string $message):?bool
+<!-- ？をつけたほうはnullを許可する -->
+
+<?php
+  function doSomething(int $num, string $message):bool{
+    echo $num,$message;
+    return true;
+  }
+  // $ret = doSomething('ARG1','ARG2');
+  $ret = doSomething(1,'ARG2');
+  
+  // error_log("[". date('Y-m-d H:i:s') . "]". "保存に失敗しました。\n", 3, "/var/log/php/error.log");
+
+  // phpinfo(); 
+  // exit();
+?>
+
+<!-- 2-6-8 -->
+
+
