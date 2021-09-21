@@ -1325,5 +1325,49 @@ declare命令はプログラムファイル単位でしか適応できない
 ?>
 
 <!-- 2-6-11 -->
+<?php
+  function add10(string $header, int ...$numbers):string
+  // 可変長引数は最後の引数にしか使えない。string型でありnullも許可されない（要厳密なデータ型チェック）
+  {
+    $total = 0;
+    foreach ($numbers as $number){
+      $total += $number;
+    }
+    return $header.$total;
+  }
+  $result = add10('計算結果：',3,2,9,1);
+  echo $result;
+?>
+
+<?php
+  function add11(string $header, int $number1,int $number2,int $number3 = 0):string
+  {
+    $total = $number1 + $number2 + $number3;
+    return $header.$total;
+  }
+  $numbers = [3,2,4];
+  // $numbers = [3];
+  // $numbers = [3,2];
+  // $numbers = [3,2,4,12];
+  $result = add11('計算結果：', ...$numbers);
+  echo $result;
+?>
+
+<?php
+  function add12(int ...$numbers): int
+  {
+    $total = 0;
+    foreach ($numbers as $number){
+
+      $total += $number;
+    }
+    return $total;
+  }
+  $numbers = [3,2,4];
+  $result = add12(...$numbers);
+  echo $result;
+?>
+
+<!-- 2-6-12 -->
 
 
