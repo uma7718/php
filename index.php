@@ -1369,5 +1369,148 @@ declare命令はプログラムファイル単位でしか適応できない
 ?>
 
 <!-- 2-6-12 -->
+<?php
+  $addFunction = function ($a, $b){
+    return $a + $b;
+  };
+  $total = $addFunction(10,20);
+?>
+<p>計算結果：<?=$total?></p>
 
+<!-- 2-6-13 -->
+<?php
+  $greeting = 'Good';
+  $greetingMarker = function ($time) use ($greeting){
+  // $greetingMarker = function ($time) use (&$greeting){ リファレンス渡しをすると上書きされる
+    print $greeting.''.$time.'<br>';
+  };
+  $greetingMarker('Morning');
+  $greeting = 'Beautiful';
+  $greetingMarker('Evening');
+?>
+
+<!-- 2-6-14 -->
+<?php
+  function printPurchased(array $items, callable $extraDataFunc): void
+  {
+    echo '<table border="1">';
+    echo '<tr>';
+    echo '<th>購入日</th>';
+    echo '<th>商品名</th>';
+    echo '<th>価格</th>';
+    echo '<th>その他</th>';
+    echo '</tr>';
+    foreach ($items as $item){
+      echo '<tr>';
+      echo '<td>',$item['date'], '</td>';
+      echo '<td>',$item['name'], '</td>';
+      echo '<td>',$item['price'], '</td>';
+      echo '<td>',$extraDataFunc($item), '</td>';
+      echo '</tr>';
+    }
+    echo '</table>';
+  }
+
+  $items = [
+    [
+      'user-id'     => 'tanaka-1234',
+      'date'        => '2018-11-21',
+      'name'        => 'ドレスシャツ',
+      'price'       => '2160',
+      'color'       => 'white',
+      'size'        => 'M',
+      'item-number' => '91025',
+      'serial'      => 'PLGO1219'
+    ],
+    [
+      'user-id'     => 'tanaka-1234',
+      'date'        => '2018-09-05',
+      'name'        => 'キッズパジャマ',
+      'price'       => '1620',
+      'color'       => 'red',
+      'size'        => 100,
+      'item-number' => 90081,
+      'serial'      => 'ZAQ80124',
+    ]
+  ];
+
+  echo '<h3>ユーザーのマイページ内の購入履歴</h3>';
+  printPurchased($items, function ($item){
+    return "色：{$item['color']}  サイズ：{$item['size']}";
+  });
+  
+  echo '<h3>販売業者専用ページ内の購入履歴</h3>';
+  printPurchased($items, function ($item){
+    return "ユーザID：{$item['user-id']}  商品No：{$item['item-number']}";
+  });
+
+  echo '<h3>俺専用ページ内の購入履歴</h3>';
+  $extraFunc = function ($item){
+    return "製造番号：{$item['serial']}  商品No：{$item['item-number']}";
+  };
+  printPurchased($items, $extraFunc);
+?>
+
+<!-- 2-6-15 -->
+<?php
+  define('EXTRA_PRINT_MODE_USER', 1);
+  define('EXTRA_PRINT_MODE_VENDOR', 2);
+
+  function printPurchased1(array $items, int $extraPrintMode): void
+  {
+    echo '<table border="1">';
+    echo '<tr>';
+    echo '<th>購入日</th>';
+    echo '<th>商品名</th>';
+    echo '<th>価格</th>';
+    echo '<th>その他</th>';
+    echo '</tr>';
+    foreach ($items as $item){
+      echo '<tr>';
+      echo '<td>',$item['date'], '</td>';
+      echo '<td>',$item['name'], '</td>';
+      echo '<td>',$item['price'], '</td>';
+      $extraData = '';
+      if ($extraPrintMode === EXTRA_PRINT_MODE_USER){
+        $extraData = "色：{$item['color']}  サイズ：{$item['size']}";
+      }elseif ($extraPrintMode === EXTRA_PRINT_MODE_VENDOR){
+        $extraData = "ユーザID：{$item['user-id']}  商品No：{$item['item-number']}";
+      }
+      echo '<td>',$extraData, '</td>';
+      echo '</tr>';
+    }
+    echo '</table>';
+  }
+
+  $items = [
+    [
+      'user-id'     => 'tanaka-1234',
+      'date'        => '2018-11-21',
+      'name'        => 'ドレスシャツ',
+      'price'       => '2160',
+      'color'       => 'white',
+      'size'        => 'M',
+      'item-number' => '91025',
+      'serial'      => 'PLGO1219'
+    ],
+    [
+      'user-id'     => 'tanaka-1234',
+      'date'        => '2018-09-05',
+      'name'        => 'キッズパジャマ',
+      'price'       => '1620',
+      'color'       => 'red',
+      'size'        => 100,
+      'item-number' => 90081,
+      'serial'      => 'ZAQ80124',
+    ]
+  ];
+
+  echo 'ユーザー向け購入履歴ページを出力します...<br>';
+  printPurchased1($items, EXTRA_PRINT_MODE_USER);
+
+  echo '販売業者向け購入履歴ページを出力します...<br>';
+  printPurchased1($items, EXTRA_PRINT_MODE_VENDOR);
+?>
+
+<!-- 2-7-1 -->
 
